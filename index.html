@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>📋 NanoDo</h2>
+            <button onclick="filterTasks('all')" id="all-btn" class="active">
+                📝 All Tasks
+            </button>
+            <button onclick="filterTasks('completed')" id="completed-btn">
+                ✅ Completed
+            </button>
+            <button onclick="filterTasks('pending')" id="pending-btn">
+                ⏳ Pending
+            </button>
+            <button onclick="toggleSearch()" id="search-btn">
+                🔍 Search Tasks
+            </button>
+            <button onclick="toggleCalendar()" id="calendar-btn">
+                📅 Calendar View
+            </button>
+            <button onclick="exportTasks()" id="export-btn">
+                📤 Export Tasks
+            </button>
+            <button onclick="signOut()" id="signout-btn">
+                🚪 Sign Out
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <h1>✨ My Task Dashboard</h1>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-tasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completed-tasks">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pending-tasks">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="overdue-tasks">0</div>
+                    <div class="stat-label">Overdue</div>
+                </div>
+            </div>
+
+            <div id="search-container" class="search-container calendar-hidden">
+                <input type="text" id="search-input" class="search-input" placeholder="🔍 Search your tasks..." oninput="performSearch()">
+            </div>
+
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="✨ What needs to be accomplished today?" required />
+                <input type="date" id="task-date" />
+                <button type="submit">➕ Add Task</button>
+            </form>
+
+          <div id="calendar-container" class="calendar-container calendar-hidden">
+    <div class="calendar-header">
+        <h3>📅 Calendar View</h3>
+        <button class="close-calendar" onclick="toggleCalendar()">×</button>
+    </div>
+    <div id="calendar-tasks"></div>
+</div>
+
+            <ul id="task-list"></ul>
+            <div id="no-tasks" class="no-tasks calendar-hidden">
+                🎉 No tasks found. Add your first task above!
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
